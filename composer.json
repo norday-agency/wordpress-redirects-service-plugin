@@ -1,0 +1,17 @@
+{
+  "name": "grrr-amsterdam/wp-redirects-service",
+  "description": "Manage redirects for the GRRR redirects service via WordPress",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "Grrr\\WPRedirectsService\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ramiro Hammen",
+      "email": "ramiro@grrr.nl"
+    }
+  ],
+  "require": {}
+}
