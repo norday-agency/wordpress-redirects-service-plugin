@@ -10,8 +10,14 @@
  * Version:     1.0.0
  */
 
-use Grrr\WPRedirectsService\Plugin;
+use Grrr\Redirects\WordPress\Plugin;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$plugin = new Plugin();
+if (!defined('GRRR_REDIRECTS_SERVICE_API_URL')) {
+    define('GRRR_REDIRECTS_SERVICE_API_URL', '');
+}
+
+$redirects_api = new Grrr\Redirects\WordPress\RedirectsApi(GRRR_REDIRECTS_SERVICE_API_URL);
+$plugin = new Plugin($redirects_api);
+$plugin->init();
