@@ -1,1 +1,5 @@
-/vendor/
+vendor/*
+.vscode
+!vendor/autoload.php
+.DS_Store
+
