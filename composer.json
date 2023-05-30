@@ -20,5 +20,8 @@
     "allow-plugins": {
       "composer/installers": true
     }
+  },
+  "require-dev": {
+    "johnpbloch/wordpress-core": "^6.2"
   }
 }
