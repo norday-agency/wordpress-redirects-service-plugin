@@ -1,6 +1,5 @@
 <?php namespace Grrr\Redirects\WordPress;
 
-use Illuminate\Support\Collection;
 use Grrr\Redirects\WordPress\RedirectsApi;
 use Grrr\Redirects\WordPress\Models\Redirect;
 
@@ -165,21 +164,19 @@ class Plugin {
 
     public function check_dependencies() {
         $active_plugins = get_option('active_plugins') ?: [];
-        $active_plugins = new Collection($active_plugins);
-        $required_plugins = new Collection(self::REQUIRED_PLUGINS);
-        $missing_plugins = $required_plugins->diff($active_plugins);
+        $missing_plugins = array_diff(self::REQUIRED_PLUGINS, $active_plugins);
 
-        if ($missing_plugins->count() > 0) {
+        if (count($missing_plugins)) {
             add_action('admin_notices', $this->show_missing_plugin_notices($missing_plugins));
         }
     }
 
-    public function show_missing_plugin_notices(Collection $missing_plugins) {
+    public function show_missing_plugin_notices(array $missing_plugins) {
         return function() use ($missing_plugins) {
             $message = sprintf(
                 'The plugin <strong>%s</strong> requires the following plugin(s)to be installed and activated.<br><strong>%s</strong>',
                 self::NAME,
-                $missing_plugins->join(', ')
+                implode(', ', $missing_plugins)
             );
             echo '<div class="notice notice-error"><p>' . $message . '</p></div>';
         };
