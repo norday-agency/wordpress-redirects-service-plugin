@@ -12,7 +12,9 @@
 
 use Grrr\Redirects\WordPress\Plugin;
 
-require_once __DIR__ . '/vendor/autoload.php';
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+    require __DIR__ . '/vendor/autoload.php';
+}
 
 if (!defined('GRRR_REDIRECTS_SERVICE_API_URL')) {
     define('GRRR_REDIRECTS_SERVICE_API_URL', '');
