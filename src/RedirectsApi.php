@@ -3,42 +3,45 @@
 use Grrr\Redirects\WordPress\Models\Redirect;
 use WP_Http;
 
-class RedirectsApi {
+class RedirectsApi
+{
+    public function __construct(private string $api_url)
+    {
+    }
 
-	public function __construct(private string $api_url) {
-	}
-
-	public function create(Redirect $redirect): void {
+    public function create(Redirect $redirect): void
+    {
         $client = new WP_Http();
         $client->post($this->api_url, [
-            'method' => 'POST',
-            'headers' => [
-                'Content-Type' => 'application/json',
+            "method" => "POST",
+            "headers" => [
+                "Content-Type" => "application/json",
             ],
-            'body' => json_encode([
-                'from' => $redirect->from,
-                'to' => $redirect->to,
-                'permanently' => $redirect->permanently,
+            "body" => json_encode([
+                "from" => $redirect->from,
+                "to" => $redirect->to,
+                "permanently" => $redirect->permanently,
             ]),
         ]);
-	}
+    }
 
-	public function update(Redirect $redirect): void {
+    public function update(Redirect $redirect): void
+    {
         $this->delete($redirect->_original_from);
         $this->create($redirect);
-	}
+    }
 
-	public function delete(string $from): void {
+    public function delete(string $from): void
+    {
         $client = new WP_Http();
         $client->post($this->api_url, [
-            'method' => 'DELETE',
-            'headers' => [
-                'Content-Type' => 'application/json',
+            "method" => "DELETE",
+            "headers" => [
+                "Content-Type" => "application/json",
             ],
-            'body' => json_encode([
-                'from' => $from,
+            "body" => json_encode([
+                "from" => $from,
             ]),
         ]);
-	}
-
+    }
 }
