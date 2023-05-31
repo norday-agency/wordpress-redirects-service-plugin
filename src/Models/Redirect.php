@@ -21,6 +21,10 @@ class Redirect
         $from = get_field("from", $post_id);
         $to = get_field("to", $post_id);
         $permanently = get_field("permanently", $post_id);
+
+        /**
+         * @var string|null $original_from
+         */
         $original_from = get_post_meta(
             $post_id,
             self::ORIGINAL_FROM_META_KEY,

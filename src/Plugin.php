@@ -2,6 +2,7 @@
 
 use Grrr\Redirects\WordPress\RedirectsApi;
 use Grrr\Redirects\WordPress\Models\Redirect;
+use WP_Post;
 
 class Plugin
 {
@@ -20,7 +21,7 @@ class Plugin
     {
     }
 
-    public function init()
+    public function init(): void
     {
         add_action("activate_plugin", [$this, "check_dependencies"]);
         add_action("plugins_loaded", [$this, "check_dependencies"]);
@@ -60,10 +61,10 @@ class Plugin
     }
 
     public function update_remote_redirect_on_status_change(
-        $new_status,
-        $old_status,
-        $post
-    ) {
+        string $new_status,
+        string $old_status,
+        WP_Post $post
+    ): void {
         if ($post->post_type !== self::POST_TYPE) {
             return;
         }
@@ -85,7 +86,7 @@ class Plugin
         $this->redirects_api->update($redirect);
     }
 
-    public function delete_redirect(int $post_id)
+    public function delete_redirect(int $post_id): void
     {
         if (get_post_type($post_id) !== self::POST_TYPE) {
             return;
@@ -132,8 +133,9 @@ class Plugin
             return;
         }
         $redirect = Redirect::from_post_id($post_id);
+        $post_status = get_post_status($post_id);
 
-        if (!is_post_status_viewable(get_post_status($post_id))) {
+        if (!$post_status || !is_post_status_viewable($post_status)) {
             $this->redirects_api->delete($redirect->from);
             return;
         }
@@ -147,16 +149,16 @@ class Plugin
      * The title will be updated to the following format:
      * [from] -› [to]
      *
-     * @param [type] $post_id
+     * @param int $post_id
      * @return void
      */
-    public function update_redirect_post_title($post_id)
+    public function update_redirect_post_title(int $post_id)
     {
         if (get_post_type($post_id) !== self::POST_TYPE) {
             return;
         }
-        $foor = is_post_status_viewable(get_post_status($post_id));
-        if (!is_post_status_viewable(get_post_status($post_id))) {
+        $post_status = get_post_status($post_id);
+        if (!$post_status || !is_post_status_viewable($post_status)) {
             return;
         }
 
@@ -170,11 +172,11 @@ class Plugin
             "ID" => $post_id,
             "post_title" => $from . " &#8594; " . $to,
         ]);
-        return $post_id;
     }
 
-    public function check_dependencies()
+    public function check_dependencies(): void
     {
+        /** @var array<int, string> $active_plugins */
         $active_plugins = get_option("active_plugins") ?: [];
         $missing_plugins = array_diff(self::REQUIRED_PLUGINS, $active_plugins);
 
@@ -186,8 +188,9 @@ class Plugin
         }
     }
 
-    public function show_missing_plugin_notices(array $missing_plugins)
-    {
+    public function show_missing_plugin_notices(
+        array $missing_plugins
+    ): callable {
         return function () use ($missing_plugins) {
             $message = sprintf(
                 "The plugin <strong>%s</strong> requires the following plugin(s)to be installed and activated.<br><strong>%s</strong>",
