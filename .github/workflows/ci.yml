@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  prettier:
+    name: Code style
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "yarn"
+
+      - run: yarn install
+
+      - run: npx prettier --check .
+
+  static-analysis:
+    name: Static analysis
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.0"
+
+      - name: Validate Composer files
+        run: composer validate --ansi
+
+      - name: Install PHP dependencies
+        run: |
+          composer install --prefer-dist --no-interaction --ansi
+
+      - name: Run static analysis
+        run: composer static-analysis
