@@ -27,7 +27,9 @@ class RedirectsApi
 
     public function update(Redirect $redirect): void
     {
-        $this->delete($redirect->_original_from);
+        if ($redirect->_original_from) {
+            $this->delete($redirect->_original_from);
+        }
         $this->create($redirect);
     }
 
