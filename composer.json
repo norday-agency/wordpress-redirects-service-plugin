@@ -22,6 +22,8 @@
     }
   },
   "require-dev": {
-    "johnpbloch/wordpress-core": "^6.2"
+    "johnpbloch/wordpress-core": "^6.2",
+    "phpstan/phpstan": "^1.10",
+    "szepeviktor/phpstan-wordpress": "^1.3"
   }
 }
