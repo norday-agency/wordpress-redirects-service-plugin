@@ -25,5 +25,8 @@
     "johnpbloch/wordpress-core": "^6.2",
     "phpstan/phpstan": "^1.10",
     "szepeviktor/phpstan-wordpress": "^1.3"
+  },
+  "scripts": {
+    "static-analysis": "phpstan analyse --ansi --memory-limit 512M"
   }
 }
