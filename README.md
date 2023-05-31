@@ -27,7 +27,7 @@ composer require grrr-amsterdam/wp-redirects-service
 Make sure to add the API URL from the redirects service to you `wp-config.php`:
 
 ```php
-define('GRRR_REDIRECTS_SERVICE_API_URL', 'https://your-api-url.com');
+define("GRRR_REDIRECTS_SERVICE_API_URL", "https://your-api-url.com");
 ```
 
 ## How does this work?
