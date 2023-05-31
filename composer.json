@@ -2,6 +2,7 @@
   "name": "grrr-amsterdam/wordpress-redirects-service-plugin",
   "description": "Manage redirects for the GRRR redirects service via WordPress",
   "type": "wordpress-plugin",
+  "license": "BSD-3-Clause",
   "autoload": {
     "psr-4": {
       "Grrr\\Redirects\\WordPress\\": "src/"
