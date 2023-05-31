@@ -1,7 +1,7 @@
 # WP redirects service
 
 This plugin provides a Redirect post type and and makes sure the redirect data is sent
-to the GRRR Redirects API.
+to the [GRRR Redirects Service](https://github.com/grrr-amsterdam/redirects-service).
 
 ## Installation via Composer
 
@@ -13,7 +13,7 @@ First, add the `repositories` directive to your `composer.json`:
 "repositories": [
     {
         "type": "vcs",
-        "url": "https://github.com/grrr-amsterdam/wp-redirects-service"
+        "url": "https://github.com/grrr-amsterdam/wordpress-redirects-service-plugin"
     }
 ]
 ```
