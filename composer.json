@@ -1,5 +1,5 @@
 {
-  "name": "grrr-amsterdam/wp-redirects-service",
+  "name": "grrr-amsterdam/wordpress-redirects-service-plugin",
   "description": "Manage redirects for the GRRR redirects service via WordPress",
   "type": "wordpress-plugin",
   "autoload": {
