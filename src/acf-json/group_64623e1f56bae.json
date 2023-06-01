@@ -48,7 +48,7 @@
       "name": "permanently",
       "aria-label": "",
       "type": "true_false",
-      "instructions": "",
+      "instructions": "Usually, you have to choose permanently. If you want to test the redirect use temporary. When the test passed, you can change it to permanent.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -56,7 +56,7 @@
         "class": "",
         "id": ""
       },
-      "message": "Usually, you have to choose permanently. If you want to test the redirect use temporary. When the test passed, you can change it to permanent.",
+      "message": "Permanent",
       "default_value": 1,
       "ui": 0,
       "ui_on_text": "",
