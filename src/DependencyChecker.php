@@ -12,7 +12,7 @@ final class DependencyChecker {
     public function __construct(protected array $required_plugins) {
     }
 
-    public function register() {
+    public function register(): void {
         add_action("activate_plugin", [$this, "check_dependencies"]);
         add_action("plugins_loaded", [$this, "check_dependencies"]);
     }
