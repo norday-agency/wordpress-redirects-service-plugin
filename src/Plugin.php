@@ -27,9 +27,6 @@ class Plugin
     {
         (new DependencyChecker(self::REQUIRED_PLUGINS))->register();
 
-        // Register Redirect post type
-        // add_action('init', [$this, 'register_post_type']);
-
         // Load ACF configuration (post type and custom fields)
         add_filter("acf/settings/load_json", function ($paths) {
             $paths[] = __DIR__ . "/acf-json";
