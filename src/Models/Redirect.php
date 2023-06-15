@@ -6,6 +6,8 @@ class Redirect
     const TO_FIELD_ID = "field_646240f646603";
     const PERMANENTLY_FIELD_ID = "field_646241d746604";
 
+    const POST_TYPE = "grrr-redirect";
+
     const ORIGINAL_FROM_META_KEY = "_original_from";
 
     public function __construct(
