@@ -8,7 +8,7 @@
       "name": "from",
       "aria-label": "",
       "type": "text",
-      "instructions": "The path that must be redirected. It must start with a trailing slash, but not end with it. (For example: \\/page-x)",
+      "instructions": "The path that must be redirected. It must start with a trailing slash, but not end with it. (For example: \/page-x)",
       "required": 1,
       "conditional_logic": 0,
       "wrapper": {
@@ -28,7 +28,7 @@
       "name": "to",
       "aria-label": "",
       "type": "text",
-      "instructions": "Can be an internal path or a full URL. When internal, add a leading slash (so `\\/page-y`). For full URLs start with \\\"https:\\/\\/\\\" (so `https:\\/\\/grrr.nl`).",
+      "instructions": "Can be an internal path or a full URL. When internal, add a leading slash (so `\/page-y`). For full URLs start with \"https:\/\/\" (so `https:\/\/grrr.nl`).",
       "required": 1,
       "conditional_logic": 0,
       "wrapper": {
