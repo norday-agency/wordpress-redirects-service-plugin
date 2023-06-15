@@ -1,5 +1,6 @@
 <?php namespace Grrr\Redirects\WordPress;
 
+use Grrr\Redirects\WordPress\DependencyChecker;
 use Grrr\Redirects\WordPress\RedirectsApi;
 use Grrr\Redirects\WordPress\Models\Redirect;
 use WP_Post;
@@ -19,12 +20,12 @@ class Plugin
 
     public function __construct(protected RedirectsApi $redirects_api)
     {
+
     }
 
     public function init(): void
     {
-        add_action("activate_plugin", [$this, "check_dependencies"]);
-        add_action("plugins_loaded", [$this, "check_dependencies"]);
+        (new DependencyChecker(self::REQUIRED_PLUGINS))->register();
 
         // Register Redirect post type
         // add_action('init', [$this, 'register_post_type']);
@@ -174,32 +175,4 @@ class Plugin
         ]);
     }
 
-    public function check_dependencies(): void
-    {
-        /** @var array<int, string> $active_plugins */
-        $active_plugins = get_option("active_plugins") ?: [];
-        $missing_plugins = array_diff(self::REQUIRED_PLUGINS, $active_plugins);
-
-        if (count($missing_plugins)) {
-            add_action(
-                "admin_notices",
-                $this->show_missing_plugin_notices($missing_plugins)
-            );
-        }
-    }
-
-    public function show_missing_plugin_notices(
-        array $missing_plugins
-    ): callable {
-        return function () use ($missing_plugins) {
-            $message = sprintf(
-                "The plugin <strong>%s</strong> requires the following plugin(s)to be installed and activated.<br><strong>%s</strong>",
-                self::NAME,
-                implode(", ", $missing_plugins)
-            );
-            echo '<div class="notice notice-error"><p>' .
-                $message .
-                "</p></div>";
-        };
-    }
 }
