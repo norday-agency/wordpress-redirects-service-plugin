@@ -3,6 +3,7 @@
 use Grrr\Redirects\WordPress\DependencyChecker;
 use Grrr\Redirects\WordPress\RedirectsApi;
 use Grrr\Redirects\WordPress\RedirectsSyncer;
+use Grrr\Redirects\WordPress\Cli\ImportRedirectsCommand;
 
 class Plugin
 {
@@ -32,6 +33,10 @@ class Plugin
         });
 
         (new RedirectsSyncer($this->redirects_api))->register();
+
+        if (defined("WP_CLI") && WP_CLI) {
+            (new ImportRedirectsCommand($this->redirects_api))->register();
+        }
 
     }
 

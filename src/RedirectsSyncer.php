@@ -3,11 +3,14 @@
 use Grrr\Redirects\WordPress\Models\Redirect;
 use WP_Post;
 
-final class RedirectsSyncer {
+final class RedirectsSyncer
+{
+    public function __construct(protected RedirectsApi $redirects_api)
+    {
+    }
 
-    public function __construct(protected RedirectsApi $redirects_api) {}
-
-    public function register(): void {
+    public function register(): void
+    {
         // Programmatically update the post title to reflect the redirect
         add_action("save_post", [$this, "update_redirect_post_title"]);
 
@@ -51,6 +54,9 @@ final class RedirectsSyncer {
             return;
         }
         $redirect = Redirect::from_post_id($post->ID);
+        if (!$redirect) {
+            return;
+        }
 
         if (!is_post_status_viewable($new_status)) {
             $this->redirects_api->delete($redirect->from);
@@ -65,7 +71,9 @@ final class RedirectsSyncer {
             return;
         }
         $redirect = Redirect::from_post_id($post_id);
-        $this->redirects_api->delete($redirect->from);
+        if ($redirect) {
+            $this->redirects_api->delete($redirect->from);
+        }
     }
 
     /**
@@ -106,6 +114,9 @@ final class RedirectsSyncer {
             return;
         }
         $redirect = Redirect::from_post_id($post_id);
+        if (!$redirect) {
+            return;
+        }
         $post_status = get_post_status($post_id);
 
         if (!$post_status || !is_post_status_viewable($post_status)) {
@@ -146,6 +157,4 @@ final class RedirectsSyncer {
             "post_title" => $from . " &#8594; " . $to,
         ]);
     }
-
-
 }

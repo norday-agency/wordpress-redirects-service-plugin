@@ -1,0 +1,17 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function get_field not found\\.$#"
+			count: 4
+			path: src/Models/Redirect.php
+
+		-
+			message: "#^Function update_field not found\\.$#"
+			count: 3
+			path: src/Models/Redirect.php
+
+		-
+			message: "#^Function get_field not found\\.$#"
+			count: 4
+			path: src/RedirectsSyncer.php
+
