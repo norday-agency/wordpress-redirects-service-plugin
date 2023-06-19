@@ -15,7 +15,9 @@
     }
   ],
   "require": {
-    "composer/installers": "^2.2"
+    "composer/installers": "^2.2",
+    "phpoffice/phpspreadsheet": "^1.29",
+    "wp-cli/wp-cli-bundle": "^2.8"
   },
   "config": {
     "allow-plugins": {
