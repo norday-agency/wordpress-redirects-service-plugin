@@ -19,7 +19,6 @@ class Plugin
 
     public function __construct(protected RedirectsApi $redirects_api)
     {
-
     }
 
     public function init(): void
@@ -37,8 +36,5 @@ class Plugin
         if (defined("WP_CLI") && WP_CLI) {
             (new ImportRedirectsCommand($this->redirects_api))->register();
         }
-
     }
-
-
 }
