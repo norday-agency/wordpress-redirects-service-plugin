@@ -81,10 +81,10 @@ final class RedirectsSyncer
      *
      * This is called before the post is saved.
      *
-     * @param integer $post_id
+     * @param int|string $post_id
      * @return void
      */
-    public function save_original_from(int $post_id)
+    public function save_original_from($post_id)
     {
         if (get_post_type($post_id) !== Redirect::POST_TYPE) {
             return;
@@ -105,10 +105,10 @@ final class RedirectsSyncer
      *
      * This is called after the post is saved.
      *
-     * @param integer $post_id
+     * @param int|string $post_id
      * @return void
      */
-    public function update_remote_redirect(int $post_id)
+    public function update_remote_redirect($post_id)
     {
         if (get_post_type($post_id) !== Redirect::POST_TYPE) {
             return;
