@@ -86,6 +86,9 @@ final class RedirectsSyncer
      */
     public function save_original_from($post_id)
     {
+        if (is_string($post_id)) {
+            return;
+        }
         if (get_post_type($post_id) !== Redirect::POST_TYPE) {
             return;
         }
@@ -110,6 +113,9 @@ final class RedirectsSyncer
      */
     public function update_remote_redirect($post_id)
     {
+        if (is_string($post_id)) {
+            return;
+        }
         if (get_post_type($post_id) !== Redirect::POST_TYPE) {
             return;
         }
