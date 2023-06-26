@@ -45,15 +45,19 @@ class Redirect
     {
         $post_id = $this->get_post_id_by_from($this->from);
         $post_id = wp_insert_post([
-            'ID' => $post_id,
-            'post_type' => self::POST_TYPE,
-            'post_status' => 'publish',
-            'post_title' => $this->from,
+            "ID" => $post_id,
+            "post_type" => self::POST_TYPE,
+            "post_status" => "publish",
+            "post_title" => $this->from,
         ]);
 
         $original_from = get_field(self::ORIGINAL_FROM_META_KEY, $post_id);
         if (!$original_from) {
-            update_post_meta($post_id, self::ORIGINAL_FROM_META_KEY, $this->from);
+            update_post_meta(
+                $post_id,
+                self::ORIGINAL_FROM_META_KEY,
+                $this->from
+            );
         }
 
         update_field(self::FROM_FIELD_ID, $this->from, $post_id);
@@ -62,18 +66,18 @@ class Redirect
 
         // Save post again to trigger dynamic title update
         return wp_update_post([
-            'ID' => $post_id,
+            "ID" => $post_id,
         ]);
     }
 
-
-    protected function get_post_id_by_from(string $from): int {
+    protected function get_post_id_by_from(string $from): int
+    {
         $query = new \WP_Query([
-            'post_type' => self::POST_TYPE,
-            'meta_query' => [
+            "post_type" => self::POST_TYPE,
+            "meta_query" => [
                 [
-                    'key' => self::FROM_FIELD_NAME,
-                    'value' => $from,
+                    "key" => self::FROM_FIELD_NAME,
+                    "value" => $from,
                 ],
             ],
         ]);
