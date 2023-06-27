@@ -36,5 +36,13 @@ class Plugin
         if (defined("WP_CLI") && WP_CLI) {
             (new ImportRedirectsCommand($this->redirects_api))->register();
         }
+
+        add_action(
+            "init",
+            function () {
+                remove_post_type_support(Models\Redirect::POST_TYPE, "title");
+            },
+            99
+        );
     }
 }
