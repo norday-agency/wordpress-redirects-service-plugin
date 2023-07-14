@@ -21,7 +21,7 @@ First, add the `repositories` directive to your `composer.json`:
 Second, require this package in your project:
 
 ```sh
-composer require grrr-amsterdam/wp-redirects-service
+composer require grrr-amsterdam/wordpress-redirects-service-plugin
 ```
 
 Make sure to add the API URL from the redirects service to you `wp-config.php`:
