@@ -1,11 +1,14 @@
 # WP redirects service
 
-This plugin provides a Redirect post type and and makes sure the redirect data is sent
+This plugin provides a Redirect post type and makes sure the redirect data is sent
 to the [GRRR Redirects Service](https://github.com/grrr-amsterdam/redirects-service).
 
-## Installation via Composer
+## Requirements
 
-### Composer
+- PHP 8.0
+- Advanced Custom Fields Pro 6.1.0 or higher
+
+## Installation via Composer
 
 First, add the `repositories` directive to your `composer.json`:
 
