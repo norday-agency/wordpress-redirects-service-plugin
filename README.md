@@ -24,7 +24,7 @@ Second, require this package in your project:
 composer require grrr-amsterdam/wordpress-redirects-service-plugin
 ```
 
-Make sure to add the API URL from the redirects service to you `wp-config.php`:
+Make sure to add the API URL from the redirects by defining some required constants (these should be secret, so don't add the values to your repository):
 
 ```php
 define("GRRR_REDIRECTS_SERVICE_API_URL", "https://your-api-url.com");
