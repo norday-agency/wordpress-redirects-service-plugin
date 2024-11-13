@@ -28,7 +28,7 @@
       "name": "to",
       "aria-label": "",
       "type": "text",
-      "instructions": "Can be an internal path or a full URL. When internal, add a leading slash (so `\/page-y`). For full URLs start with \"https:\/\/\" (so `https:\/\/grrr.nl`).",
+      "instructions": "Can be an internal path or a full URL. When internal, add a leading slash (so `\/page-y`). For full URLs start with \"https:\/\/\" (so `https:\/\/norday.nl`).",
       "required": 1,
       "conditional_logic": 0,
       "wrapper": {

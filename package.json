@@ -1,7 +1,7 @@
 {
   "name": "wordpress-redirects-service-plugin",
   "version": "1.0.0",
-  "description": "Manage redirects for the GRRR redirects service via WordPress",
+  "description": "Manage redirects for the Norday redirects service via WordPress",
   "main": "index.js",
   "repository": "git@github.com:grrr-amsterdam/wordpress-redirects-service-plugin.git",
   "author": "Ramiro Hammen <ramiro@grrr.nl>",
