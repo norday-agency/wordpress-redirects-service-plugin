@@ -2,11 +2,11 @@
 /**
  * WP Redirects Service
  *
- * Manage redirects for the GRRR redirects service via WordPress
+ * Manage redirects for the Norday redirects service via WordPress
  *
  * Plugin Name: WP Redirects Service
- * Description: Manage redirects for the GRRR redirects service via WordPress
- * Author:      Ramiro Hammen <ramiro@grrr.nl>
+ * Description: Manage redirects for the Norday redirects service via WordPress
+ * Author:      Ramiro Hammen <ramiro.hammen@norday.nl>
  * Version:     1.0.0
  */
 

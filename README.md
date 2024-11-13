@@ -1,7 +1,7 @@
 # WP redirects service
 
 This plugin provides a Redirect post type and makes sure the redirect data is sent
-to the [GRRR Redirects Service](https://github.com/grrr-amsterdam/redirects-service).
+to the [Norday Redirects Service](https://github.com/grrr-amsterdam/redirects-service).
 
 ## Requirements
 
